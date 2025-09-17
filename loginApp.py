@@ -3,7 +3,7 @@ from tkinter import messagebox
 from PIL import Image
 from app import MainApp  # Importa a classe da janela principal
 
-# ---------------- Configurações iniciais ----------------
+# --- Configurações Iniciais ---
 ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("blue")
 
@@ -26,7 +26,6 @@ class LoginApp(ctk.CTk):
         left_frame.pack(side="left", fill="both")
 
         try:
-            # Use CTkImage para melhor qualidade em telas HiDPI
             ctk_image = ctk.CTkImage(light_image=Image.open(
                 "img.loginApp.jpg"), size=(360, 460))
             label_image = ctk.CTkLabel(left_frame, image=ctk_image, text="")
@@ -64,14 +63,14 @@ class LoginApp(ctk.CTk):
         pwd = self.password_entry.get()
 
         if user == "admin" and pwd == "1234":
-            self.destroy()  # Fecha a janela de login
+            self.destroy()      # Fecha a janela de login
             main_app = MainApp()  # Cria a janela principal
             main_app.mainloop()  # Executa a janela principal
         else:
             messagebox.showerror("Erro", "Usuário ou senha incorretos!")
 
 
-# ---------------- Inicia aplicação de Login ----------------
+# --- Inicia aplicação de Login ---
 if __name__ == "__main__":
-    app = LoginApp()
-    app.mainloop()
+    login_app = LoginApp()
+    login_app.mainloop()
