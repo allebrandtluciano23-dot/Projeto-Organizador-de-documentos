@@ -2,6 +2,8 @@ import customtkinter as ctk
 from tkinter import messagebox
 from PIL import Image
 import os
+ 
+from app import MainApp
 
 # --- Configurações Iniciais ---
 ctk.set_appearance_mode("light")
@@ -17,7 +19,7 @@ class LoginApp(ctk.CTk):
         self.resizable(False, False)
 
         # Define a cor de fundo da tela principal
-        self.configure(fg_color="#F5F5F5")  # mesma cor de fundo da página (pode mudar)
+        self.configure(fg_color="#F5F5F5")  # cor de fundo
 
         # ---------------- Frame principal ----------------
         main_frame = ctk.CTkFrame(self, fg_color="transparent")
@@ -28,19 +30,18 @@ class LoginApp(ctk.CTk):
         left_frame.pack(side="left", fill="both", expand=True, padx=(0, 20))  # espaço à direita
 
         try:
-            img_path = os.path.join(os.path.dirname(__file__), "imgLoginApp.png")
-            ctk_image = ctk.CTkImage(light_image=Image.open(img_path), size=(400, 400))
-            ctk_image = ctk.CTkImage(light_image=Image.open(
-                "img.loginApp.jpg"), size=(360, 460))
+            img_path = os.path.join(os.path.dirname(__file__), "assets", "img.loginApp.jpg")
+            ctk_image = ctk.CTkImage(light_image=Image.open(img_path), size=(360, 460))
             label_image = ctk.CTkLabel(left_frame, image=ctk_image, text="")
             label_image.pack(expand=True)
         except Exception as e:
             ctk.CTkLabel(
-                left_frame,
-                text=f"Imagem não encontrada\n{e}",
-                font=("Arial", 16),
-                justify="center"
-            ).pack(expand=True)
+            left_frame,
+            text=f"Imagem não encontrada\n{e}",
+            font=("Arial", 16),
+            justify="center"
+        ).pack(expand=True)
+
 
         # ---------------- Lado direito (formulário) ----------------
         right_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
@@ -70,16 +71,13 @@ class LoginApp(ctk.CTk):
         if user == "admin" and pwd == "1234":
             messagebox.showinfo("Sucesso", "Login realizado com sucesso!")
             self.destroy()
-            # Aqui você poderia abrir a MainApp()
-            self.destroy()      # Fecha a janela de login
-            main_app = MainApp()  # Cria a janela principal
-            main_app.mainloop()  # Executa a janela principal
+            main_app = MainApp()
+            main_app.mainloop()
         else:
             messagebox.showerror("Erro", "Usuário ou senha incorretos!")
 
 
 # ---------------- Inicia aplicação ----------------
-# --- Inicia aplicação de Login ---
 if __name__ == "__main__":
     login_app = LoginApp()
     login_app.mainloop()
