@@ -1,5 +1,8 @@
 import customtkinter as ctk
 
+
+ctk.set_appearance_mode("light")
+
 # Funções dos botões de ação
 
 

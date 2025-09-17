@@ -72,6 +72,6 @@ class LoginApp(ctk.CTk):
 
 
 # ---------------- Inicia aplicação de Login ----------------
-if __name__ == "__main__":
+if __name__ == "__lmain__":
     app = LoginApp()
     app.mainloop()
