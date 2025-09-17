@@ -12,7 +12,7 @@ class LoginApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Login - Sistema de Gestão Documental")
+        self.title("Login - Sistema de Gestão Documental - teste")
         self.geometry("800x500")
         self.resizable(False, False)
 
